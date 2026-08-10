@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Rakha Putra — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0c1420;
+    --bg-grid: #14203186;
+    --panel: #121d2e;
+    --panel-2: #17233868;
+    --border: #253347;
+    --border-soft: #1b2740;
+    --text: #e7edf5;
+    --muted: #8b9bb2;
+    --dim: #5a6b83;
+    --ok: #3fd6a0;
+    --ok-dim: #3fd6a022;
+    --warn: #f2a94d;
+    --data: #6db8ff;
+    --data-dim: #6db8ff22;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      linear-gradient(var(--bg-grid) 1px, transparent 1px) 0 0/44px 44px,
+      linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px) 0 0/44px 44px,
+      var(--bg);
+    color:var(--text);
+    font-family:var(--mono);
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--ok-dim); color:var(--ok);}
+
+  .wrap{max-width:960px; margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(12,20,32,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px;}
+  .nav-brand{display:flex; align-items:center; gap:9px; font-family:var(--display); font-weight:600; font-size:14px; letter-spacing:0.02em;}
+  .dot-live{width:7px; height:7px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 0 var(--ok-dim); animation:pulse 2.4s infinite;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(63,214,160,0.5);}
+    70%{box-shadow:0 0 0 8px rgba(63,214,160,0);}
+    100%{box-shadow:0 0 0 0 rgba(63,214,160,0);}
+  }
+  .nav-links{display:flex; gap:26px; font-size:12.5px; color:var(--muted);}
+  .nav-links a{transition:color .15s;}
+  .nav-links a:hover{color:var(--ok);}
+  .nav-links .idx{color:var(--dim); margin-right:4px;}
+
+  /* HERO */
+  header.hero{padding:76px 0 60px; border-bottom:1px solid var(--border-soft); position:relative;}
+  .term{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,0.6);
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 14px; background:var(--panel-2); border-bottom:1px solid var(--border-soft);
+  }
+  .term-dot{width:9px;height:9px;border-radius:50%;}
+  .term-bar span:nth-child(1){background:#ef6a5f;}
+  .term-bar span:nth-child(2){background:#f4bf4f;}
+  .term-bar span:nth-child(3){background:#61c454;}
+  .term-title{margin-left:8px; font-size:11.5px; color:var(--dim);}
+  .term-body{padding:22px 24px 26px; font-size:13.5px;}
+  .term-line{color:var(--muted); margin-bottom:4px;}
+  .term-line .prompt{color:var(--ok);}
+  .term-line .path{color:var(--data);}
+  #typed-out{color:var(--text); white-space:pre-wrap;}
+  .cursor{display:inline-block; width:7px; height:14px; background:var(--ok); vertical-align:-2px; animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .hero-name{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(34px, 5.4vw, 54px);
+    letter-spacing:-0.01em;
+    margin:28px 0 6px;
+  }
+  .hero-role{color:var(--ok); font-size:15px; font-weight:500; margin-bottom:16px;}
+  .hero-sub{color:var(--muted); max-width:600px; font-size:14px; margin-bottom:26px;}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:10px 22px; font-size:12.5px; color:var(--dim); margin-bottom:30px;}
+  .hero-meta span{color:var(--muted);}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:12px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 18px; border-radius:6px; font-size:12.5px; font-weight:600;
+    border:1px solid var(--border); transition:all .15s;
+  }
+  .btn-primary{background:var(--ok); color:#062017; border-color:var(--ok);}
+  .btn-primary:hover{background:#5fe3b6;}
+  .btn-ghost{color:var(--text); background:transparent;}
+  .btn-ghost:hover{border-color:var(--ok); color:var(--ok);}
+
+  /* SECTION SCAFFOLD */
+  section{padding:64px 0; border-bottom:1px solid var(--border-soft);}
+  .sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:34px;}
+  .sec-tag{font-size:11px; color:var(--dim); letter-spacing:0.12em;}
+  .sec-title{font-family:var(--display); font-weight:600; font-size:24px;}
+  .sec-note{margin-left:auto; font-size:11.5px; color:var(--dim);}
+
+  /* EXPERIENCE — service log */
+  .svc{
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:var(--panel);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .svc-head{
+    display:flex; align-items:center; gap:14px;
+    padding:16px 18px; cursor:pointer; user-select:none;
+    border-bottom:1px solid transparent;
+  }
+  .svc.open .svc-head{border-bottom-color:var(--border-soft);}
+  .status-pill{
+    display:flex; align-items:center; gap:6px;
+    font-size:10.5px; font-weight:700; letter-spacing:0.04em;
+    padding:4px 9px; border-radius:100px; white-space:nowrap;
+  }
+  .status-active{background:var(--ok-dim); color:var(--ok);}
+  .status-stopped{background:#5a6b8322; color:var(--dim);}
+  .status-pill .sdot{width:6px;height:6px;border-radius:50%; background:currentColor;}
+  .svc-title{font-family:var(--display); font-weight:600; font-size:15.5px; flex:1; min-width:0;}
+  .svc-company{color:var(--muted); font-weight:400; font-size:12.5px; display:block; margin-top:2px;}
+  .svc-time{font-size:11.5px; color:var(--dim); white-space:nowrap;}
+  .svc-chev{color:var(--dim); font-size:11px; transition:transform .2s;}
+  .svc.open .svc-chev{transform:rotate(90deg); color:var(--ok);}
+  .svc-body{
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+  }
+  .svc.open .svc-body{max-height:400px;}
+  .svc-body ul{list-style:none; padding:16px 18px 18px 18px; font-size:13px; color:var(--muted);}
+  .svc-body li{padding-left:16px; position:relative; margin-bottom:9px;}
+  .svc-body li::before{content:"›"; position:absolute; left:0; color:var(--ok);}
+
+  /* PROJECTS — deployed cards */
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .proj{
+    border:1px solid var(--border); border-radius:8px; background:var(--panel);
+    padding:20px; display:flex; flex-direction:column; gap:12px;
+    transition:border-color .15s, transform .15s;
+  }
+  .proj:hover{border-color:#31415c; transform:translateY(-2px);}
+  .proj-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+  .proj-name{font-family:var(--display); font-weight:600; font-size:15px;}
+  .proj-metric{
+    font-size:10.5px; color:var(--warn); background:#f2a94d1c;
+    border:1px solid #f2a94d33; padding:3px 8px; border-radius:5px; white-space:nowrap;
+  }
+  .proj-desc{color:var(--muted); font-size:12.8px; flex:1;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:6px;}
+  .tag{
+    font-size:10.5px; color:var(--data); background:var(--data-dim);
+    padding:3px 8px; border-radius:4px; border:1px solid #6db8ff2e;
+  }
+
+  /* SKILLS — module rack */
+  .modules{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .module{border:1px solid var(--border); border-radius:8px; background:var(--panel); padding:16px 18px;}
+  .module-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;}
+  .module-name{font-size:11px; color:var(--dim); letter-spacing:0.08em; text-transform:uppercase;}
+  .module-idx{font-size:10px; color:var(--dim);}
+  .chip-row{display:flex; flex-wrap:wrap; gap:6px;}
+  .chip{font-size:11.5px; color:var(--text); background:var(--panel-2); border:1px solid var(--border-soft); padding:4px 9px; border-radius:5px;}
+
+  /* EDU / CERT */
+  .cred-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .cred{
+    flex:1; min-width:260px;
+    border:1px solid var(--border); border-radius:8px; background:var(--panel); padding:18px 20px;
+  }
+  .cred-label{font-size:10.5px; color:var(--dim); letter-spacing:0.08em; margin-bottom:8px;}
+  .cred-title{font-family:var(--display); font-weight:600; font-size:14.5px; margin-bottom:4px;}
+  .cred-sub{font-size:12px; color:var(--muted);}
+
+  /* FOOTER / CONTACT */
+  footer{padding:70px 0 50px;}
+  .foot-term{max-width:520px;}
+  .foot-links{display:flex; gap:18px; flex-wrap:wrap; margin-top:22px; font-size:12.5px;}
+  .foot-links a{color:var(--muted); border-bottom:1px solid transparent; padding-bottom:2px; transition:color .15s, border-color .15s;}
+  .foot-links a:hover{color:var(--ok); border-color:var(--ok);}
+  .foot-bottom{margin-top:50px; padding-top:20px; border-top:1px solid var(--border-soft); font-size:11px; color:var(--dim); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:760px){
+    .nav-links{display:none;}
+    .grid-2{grid-template-columns:1fr;}
+    .modules{grid-template-columns:1fr 1fr;}
+    .svc-time{display:none;}
+  }
+  @media (max-width:520px){
+    .modules{grid-template-columns:1fr;}
+    .foot-bottom{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-brand"><span class="dot-live"></span> rakha@portfolio</div>
+    <div class="nav-links">
+      <a href="#experience"><span class="idx">01</span>experience</a>
+      <a href="#projects"><span class="idx">02</span>projects</a>
+      <a href="#stack"><span class="idx">03</span>stack</a>
+      <a href="#contact"><span class="idx">04</span>contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="term">
+      <div class="term-bar">
+        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+        <span class="term-title">~/rakha — status check</span>
+      </div>
+      <div class="term-body">
+        <div class="term-line"><span class="prompt">$</span> whoami</div>
+        <div id="typed-out"></div><span class="cursor" id="cursor"></span>
+      </div>
+    </div>
+
+    <h1 class="hero-name">Muhammad Rakha Putra</h1>
+    <div class="hero-role">Software Engineer — Backend-leaning Full Stack</div>
+    <p class="hero-sub">
+      I build the internal systems companies quietly depend on — billing engines, ticketing platforms,
+      supplier workflows, network dashboards. Three-plus years turning manual, spreadsheet-driven processes
+      into reliable, monitored software.
+    </p>
+    <div class="hero-meta">
+      <span>📍 Jakarta, Indonesia</span>
+      <span>⏱ 3+ yrs professional experience</span>
+      <span>🟢 currently @ PT. Terasys Virtual</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:mrakha184@gmail.com">Send an email</a>
+      <a class="btn btn-ghost" href="https://github.com/MuhRakhaP" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/muhammad-rakha-putra" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</header>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">01 /</span>
+      <span class="sec-title">Experience</span>
+      <span class="sec-note">4 services · 1 active</span>
+    </div>
+
+    <div class="svc-list">
+      <div class="svc open">
+        <div class="svc-head" onclick="toggleSvc(this)">
+          <span class="status-pill status-active"><span class="sdot"></span>ACTIVE</span>
+          <div class="svc-title">Software Engineer
+            <span class="svc-company">PT. Terasys Virtual, Jakarta</span>
+          </div>
+          <span class="svc-time">01/2026 — present</span>
+          <span class="svc-chev">▶</span>
+        </div>
+        <div class="svc-body">
+          <ul>
+            <li>Develop and maintain web applications and internal software systems built around real business and operational requirements.</li>
+            <li>Design REST APIs, backend services, and database systems with Laravel, Node.js, TypeScript, and PostgreSQL.</li>
+            <li>Work directly with stakeholders to scope requirements, troubleshoot production issues, and ship improvements.</li>
+            <li>Own testing, debugging, performance tuning, and production issue resolution end to end.</li>
+            <li>Manage deployments and environments with Git, Docker, VPS, PM2, and Caddy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-head" onclick="toggleSvc(this)">
+          <span class="status-pill status-stopped"><span class="sdot"></span>STOPPED</span>
+          <div class="svc-title">Full Stack Developer
+            <span class="svc-company">PT. TD Automotive Compressor Indonesia, Cikarang</span>
+          </div>
+          <span class="svc-time">11/2024 — 05/2025</span>
+          <span class="svc-chev">▶</span>
+        </div>
+        <div class="svc-body">
+          <ul>
+            <li>Designed and built full-stack applications on HMVC architecture, streamlining internal data management.</li>
+            <li>Implemented backend logic and system integrations with modern web tooling.</li>
+            <li>Built responsive, user-friendly interfaces for internal teams and daily workflows.</li>
+            <li>Optimized performance and applied security best practices across data and application layers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-head" onclick="toggleSvc(this)">
+          <span class="status-pill status-stopped"><span class="sdot"></span>STOPPED</span>
+          <div class="svc-title">Backend Developer
+            <span class="svc-company">PT. Satu Produksi Digital, Jakarta</span>
+          </div>
+          <span class="svc-time">06/2023 — 10/2024</span>
+          <span class="svc-chev">▶</span>
+        </div>
+        <div class="svc-body">
+          <ul>
+            <li>Built and maintained backend services for a scalable e-commerce platform on Node.js and Firebase.</li>
+            <li>Designed and optimized database structures for performance and reliability.</li>
+            <li>Applied indexing and query optimization to cut database response times.</li>
+            <li>Developed APIs supporting consistent frontend-backend integration, working closely with frontend engineers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-head" onclick="toggleSvc(this)">
+          <span class="status-pill status-stopped"><span class="sdot"></span>STOPPED</span>
+          <div class="svc-title">Full Stack Developer
+            <span class="svc-company">PT. Metropolitan Land Tbk, Jakarta</span>
+          </div>
+          <span class="svc-time">09/2022 — 03/2023</span>
+          <span class="svc-chev">▶</span>
+        </div>
+        <div class="svc-body">
+          <ul>
+            <li>Partnered with senior engineers on root cause analysis, code review, and unit testing.</li>
+            <li>Engineered, tested, and deployed custom web application modules, improving reliability across teams.</li>
+            <li>Tested and recommended improvements to keep functionality strong and systems optimized.</li>
+            <li>Independently installed, customized, and integrated commercial software packages.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">02 /</span>
+      <span class="sec-title">Deployed projects</span>
+      <span class="sec-note">6 systems shipped</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="proj reveal">
+        <div class="proj-top">
+          <div class="proj-name">Outstanding Delivery Automation</div>
+          <div class="proj-metric">490 → 60 min/wk</div>
+        </div>
+        <div class="proj-desc">Digitalized the manual follow-up process for outstanding deliveries — auto-pulling data from the Enterprise Planning System, chasing suppliers on overdue items, and handling PO due-date changes and cancellations through an "Auto In Portal."</div>
+        <div class="tag-row"><span class="tag">Automation</span><span class="tag">EPS Integration</span><span class="tag">Workflow</span></div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-top">
+          <div class="proj-name">ISP Billing & Network Platform</div>
+          <div class="proj-metric">live monitoring</div>
+        </div>
+        <div class="proj-desc">Full ISP operations platform: customer management, billing, and network services. MikroTik PPPoE sync for credentials, automated invoicing with Xendit, and dashboards for revenue, online status, and router health.</div>
+        <div class="tag-row"><span class="tag">MikroTik</span><span class="tag">Xendit</span><span class="tag">Docker</span><span class="tag">PostgreSQL</span></div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-top">
+          <div class="proj-name">Helpdesk Ticketing System</div>
+          <div class="proj-metric">Laravel</div>
+        </div>
+        <div class="proj-desc">Full-stack support platform with automated ticket routing — rules and triggers assign requests by priority and topic — plus a Koolreport analytics module tracking team performance and satisfaction.</div>
+        <div class="tag-row"><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Koolreport</span></div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-top">
+          <div class="proj-name">Supplier Performance Report</div>
+          <div class="proj-metric">paper → portal</div>
+        </div>
+        <div class="proj-desc">Led the shift from a manual SPR process to a digital portal, working across Procurement, QA, and PC to map the workflow, track defect rates, and train users onto the new system.</div>
+        <div class="tag-row"><span class="tag">CodeIgniter 3</span><span class="tag">MSSQL</span></div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-top">
+          <div class="proj-name">POS System</div>
+          <div class="proj-metric">REST API</div>
+        </div>
+        <div class="proj-desc">Point-of-sale platform for transactions and operations, with a PostgreSQL schema covering products, customers, transactions, shifts, and expenses, plus business reporting workflows.</div>
+        <div class="tag-row"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span></div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-top">
+          <div class="proj-name">Rental Car Application</div>
+          <div class="proj-metric">Laravel</div>
+        </div>
+        <div class="proj-desc">Booking and rental platform for vehicle agencies — vehicle listings, check-in/check-out flows, and tracking across users, drivers, and cars in one responsive interface.</div>
+        <div class="tag-row"><span class="tag">HTML/CSS</span><span class="tag">Laravel</span><span class="tag">MySQL</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">03 /</span>
+      <span class="sec-title">Stack</span>
+      <span class="sec-note">6 modules loaded</span>
+    </div>
+
+    <div class="modules">
+      <div class="module reveal">
+        <div class="module-head"><span class="module-name">Languages</span><span class="module-idx">mod.01</span></div>
+        <div class="chip-row">
+          <span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">PHP</span><span class="chip">SQL</span>
+        </div>
+      </div>
+      <div class="module reveal">
+        <div class="module-head"><span class="module-name">Frontend</span><span class="module-idx">mod.02</span></div>
+        <div class="chip-row">
+          <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">Vue.js</span><span class="chip">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="module reveal">
+        <div class="module-head"><span class="module-name">Backend</span><span class="module-idx">mod.03</span></div>
+        <div class="chip-row">
+          <span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">NestJS</span><span class="chip">Laravel</span><span class="chip">CodeIgniter</span><span class="chip">FastAPI</span>
+        </div>
+      </div>
+      <div class="module reveal">
+        <div class="module-head"><span class="module-name">Database</span><span class="module-idx">mod.04</span></div>
+        <div class="chip-row">
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Firebase</span>
+        </div>
+      </div>
+      <div class="module reveal">
+        <div class="module-head"><span class="module-name">API & Integration</span><span class="module-idx">mod.05</span></div>
+        <div class="chip-row">
+          <span class="chip">REST API</span><span class="chip">Webhooks</span><span class="chip">Xendit</span><span class="chip">MikroTik</span><span class="chip">PPPoE</span>
+        </div>
+      </div>
+      <div class="module reveal">
+        <div class="module-head"><span class="module-name">DevOps</span><span class="module-idx">mod.06</span></div>
+        <div class="chip-row">
+          <span class="chip">Docker</span><span class="chip">VPS</span><span class="chip">Git</span><span class="chip">PM2</span><span class="chip">Caddy</span><span class="chip">Coolify</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">04 /</span>
+      <span class="sec-title">Education & credentials</span>
+    </div>
+    <div class="cred-row">
+      <div class="cred reveal">
+        <div class="cred-label">EDUCATION</div>
+        <div class="cred-title">SMK Pariwisata Metland School</div>
+        <div class="cred-sub">Major in Computer Science · Jakarta, Indonesia · 2020 – 2023</div>
+      </div>
+      <div class="cred reveal">
+        <div class="cred-label">CERTIFICATION</div>
+        <div class="cred-title">MikroTik Certified Network Associate (MTCNA)</div>
+        <div class="cred-sub">MikroTik · Issued 05/2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-term">
+      <div class="term-line"><span class="prompt">$</span> <span class="path">./contact</span> --reach-out</div>
+      <p style="color:var(--text); font-size:14.5px; margin-top:14px; max-width:480px;">
+        Open to backend-leaning full-stack roles — especially teams building the internal
+        tools nobody sees but everybody relies on. Reach out any time.
+      </p>
+    </div>
+    <div class="foot-links">
+      <a href="mailto:mrakha184@gmail.com">mrakha184@gmail.com</a>
+      <a href="tel:+6281296914059">(+62) 8129-6914-059</a>
+      <a href="https://linkedin.com/in/muhammad-rakha-putra" target="_blank" rel="noopener">linkedin.com/in/muhammad-rakha-putra</a>
+      <a href="https://github.com/MuhRakhaP" target="_blank" rel="noopener">github.com/MuhRakhaP</a>
+    </div>
+    <div class="foot-bottom">
+      <span>Muhammad Rakha Putra — Jakarta, Indonesia</span>
+      <span id="clock">uptime: --</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Typing effect
+  const lines = [
+    "name        : Muhammad Rakha Putra",
+    "role        : Software Engineer (Backend-leaning Full Stack)",
+    "location    : Jakarta, Indonesia",
+    "experience  : 3+ years, production systems",
+    "focus       : Laravel · Node.js · TypeScript · PostgreSQL · MySQL",
+    "status      : open to new roles"
+  ];
+  const out = document.getElementById('typed-out');
+  const cursor = document.getElementById('cursor');
+  let li = 0, ci = 0;
+
+  function typeStep(){
+    if(li >= lines.length){ return; }
+    const line = lines[li];
+    if(ci <= line.length){
+      let built = '';
+      for(let i=0;i<li;i++) built += lines[i] + '\n';
+      built += line.slice(0, ci);
+      out.textContent = built;
+      ci++;
+      setTimeout(typeStep, 16 + Math.random()*22);
+    } else {
+      li++; ci = 0;
+      setTimeout(typeStep, 260);
+    }
+  }
+  typeStep();
+
+  // Accordion
+  function toggleSvc(headEl){
+    const svc = headEl.parentElement;
+    const wasOpen = svc.classList.contains('open');
+    document.querySelectorAll('.svc.open').forEach(s => s.classList.remove('open'));
+    if(!wasOpen) svc.classList.add('open');
+  }
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Faux uptime clock since first work experience (09/2022)
+  const start = new Date('2022-09-01T00:00:00');
+  function updateUptime(){
+    const now = new Date();
+    const diffMs = now - start;
+    const days = Math.floor(diffMs / 86400000);
+    const years = (diffMs / (365.25*86400000)).toFixed(2);
+    document.getElementById('clock').textContent = `uptime: ${years} yrs (${days.toLocaleString()} days)`;
+  }
+  updateUptime();
+</script>
+
+</body>
+</html>
