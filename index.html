@@ -362,62 +362,149 @@
       <span class="sec-title">Deployed projects</span>
       <span class="sec-note">6 systems shipped</span>
     </div>
-
     <div class="grid-2">
+      <!-- 1. AI-Powered Helpdesk Assistant (RAG) -->
       <div class="proj reveal">
         <div class="proj-top">
-          <div class="proj-name">Outstanding Delivery Automation</div>
-          <div class="proj-metric">490 → 60 min/wk</div>
+          <div class="proj-name">AI-Powered Helpdesk Assistant (RAG)</div>
+          <div class="proj-metric">In Development</div>
         </div>
-        <div class="proj-desc">Digitalized the manual follow-up process for outstanding deliveries — auto-pulling data from the Enterprise Planning System, chasing suppliers on overdue items, and handling PO due-date changes and cancellations through an "Auto In Portal."</div>
-        <div class="tag-row"><span class="tag">Automation</span><span class="tag">EPS Integration</span><span class="tag">Workflow</span></div>
+        <div class="proj-desc">
+          <p><strong>Type:</strong> AI / LLM Integration — Personal Project</p>
+          <p><strong>Challenge:</strong> Support agents spent significant time manually searching past tickets to find relevant solutions before drafting a reply, slowing down response time and producing inconsistent answers across agents.</p>
+          <p><strong>Solution:</strong> Designed and built a Retrieval-Augmented Generation (RAG) pipeline: ticket history is embedded and stored in PostgreSQL with pgvector for semantic search, then relevant past tickets/solutions are retrieved and passed to an LLM (OpenAI/Claude API) to generate a draft response. Built the backend, vector search, and API integration end to end, with a human-in-the-loop step so agents review and edit AI-generated drafts before sending.</p>
+          <p><strong>Result:</strong> Turned ticket history into a searchable knowledge base and gave agents ready-to-review draft responses instead of starting from scratch — reducing time spent searching for solutions while keeping a human in control of final answers.</p>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">pgvector</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag">Embedding Model</span>
+          <span class="tag">REST API</span>
+        </div>
       </div>
 
-      <div class="proj reveal">
-        <div class="proj-top">
-          <div class="proj-name">ISP Billing & Network Platform</div>
-          <div class="proj-metric">live monitoring</div>
-        </div>
-        <div class="proj-desc">Full ISP operations platform: customer management, billing, and network services. MikroTik PPPoE sync for credentials, automated invoicing with Xendit, and dashboards for revenue, online status, and router health.</div>
-        <div class="tag-row"><span class="tag">MikroTik</span><span class="tag">Xendit</span><span class="tag">Docker</span><span class="tag">PostgreSQL</span></div>
+  <!-- 2. Outstanding Delivery Digitalization & Automation System -->
+  <div class="proj reveal">
+    <div class="proj-top">
+      <div class="proj-name">Outstanding Delivery Digitalization & Automation System</div>
+      <div class="proj-metric">490 → 60 min/wk</div>
       </div>
-
-      <div class="proj reveal">
-        <div class="proj-top">
-          <div class="proj-name">Helpdesk Ticketing System</div>
-          <div class="proj-metric">Laravel</div>
-        </div>
-        <div class="proj-desc">Full-stack support platform with automated ticket routing — rules and triggers assign requests by priority and topic — plus a Koolreport analytics module tracking team performance and satisfaction.</div>
-        <div class="tag-row"><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Koolreport</span></div>
+      <div class="proj-desc">
+        <p><strong>Type:</strong> Business Process Automation — PT. TD Automotive Compressor Indonesia</p>
+        <p><strong>Challenge:</strong> The outstanding-delivery follow-up process was fully manual — staff had to pull delivery data from the Enterprise Planning System (EPS) by hand, then chase suppliers individually for due-date updates, PO revisions, and cancellations, consuming hours every week.</p>
+        <p><strong>Solution:</strong> Designed and built an automation system that pulls and processes EPS delivery data automatically, then routes structured follow-ups to suppliers for overdue items. Added an “Auto In Portal” so suppliers could self-report status, removing manual back-and-forth entirely.</p>
+        <p><strong>Result:</strong> Cut the weekly follow-up process from 490 minutes to 60 minutes — a 430-minute (88%) reduction in manual effort per week, freeing the team to focus on higher-value procurement work.</p>
       </div>
-
-      <div class="proj reveal">
-        <div class="proj-top">
-          <div class="proj-name">Supplier Performance Report</div>
-          <div class="proj-metric">paper → portal</div>
-        </div>
-        <div class="proj-desc">Led the shift from a manual SPR process to a digital portal, working across Procurement, QA, and PC to map the workflow, track defect rates, and train users onto the new system.</div>
-        <div class="tag-row"><span class="tag">CodeIgniter 3</span><span class="tag">MSSQL</span></div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-top">
-          <div class="proj-name">POS System</div>
-          <div class="proj-metric">REST API</div>
-        </div>
-        <div class="proj-desc">Point-of-sale platform for transactions and operations, with a PostgreSQL schema covering products, customers, transactions, shifts, and expenses, plus business reporting workflows.</div>
-        <div class="tag-row"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span></div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-top">
-          <div class="proj-name">Rental Car Application</div>
-          <div class="proj-metric">Laravel</div>
-        </div>
-        <div class="proj-desc">Booking and rental platform for vehicle agencies — vehicle listings, check-in/check-out flows, and tracking across users, drivers, and cars in one responsive interface.</div>
-        <div class="tag-row"><span class="tag">HTML/CSS</span><span class="tag">Laravel</span><span class="tag">MySQL</span></div>
+      <div class="tag-row">
+        <span class="tag">Automation</span>
+        <span class="tag">EPS Integration</span>
+        <span class="tag">Web Portal</span>
       </div>
     </div>
+  
+    <!-- 3. ISP Billing & Network Management Platform -->
+    <div class="proj reveal">
+      <div class="proj-top">
+        <div class="proj-name">ISP Billing & Network Management Platform</div>
+        <div class="proj-metric">live monitoring</div>
+      </div>
+      <div class="proj-desc">
+        <p><strong>Type:</strong> Full Stack Platform — Personal / Client Project</p>
+        <p><strong>Challenge:</strong> ISPs typically juggle customer management, billing, and network device status across disconnected tools — manual PPPoE account syncing, manual invoicing, and no unified view of network health.</p>
+        <p><strong>Solution:</strong> Built a single platform integrating MikroTik PPPoE for automatic credential sync with account status, automated monthly invoice generation, and Xendit for online payments. Added real-time dashboards for revenue, PPPoE online status, network traffic, and router health, then deployed the full stack on a self-managed VPS with Docker, PM2, and Caddy.</p>
+        <p><strong>Result:</strong> Replaced three previously manual/disconnected workflows (account sync, billing, network monitoring) with one automated, self-hosted platform — reducing operational overhead and giving operators real-time visibility into revenue and network status.</p>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Node.js</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">MikroTik API</span>
+        <span class="tag">Xendit</span>
+        <span class="tag">Docker</span>
+        <span class="tag">PM2</span>
+        <span class="tag">Caddy</span>
+      </div>
+    </div>
+  
+    <!-- 4. Supplier Performance Report (SPR) Portal -->
+    <div class="proj reveal">
+      <div class="proj-top">
+        <div class="proj-name">Supplier Performance Report (SPR) Portal</div>
+        <div class="proj-metric">paper → portal</div>
+      </div>
+      <div class="proj-desc">
+        <p><strong>Type:</strong> Digital Transformation — PT. TD Automotive Compressor Indonesia</p>
+        <p><strong>Challenge:</strong> Supplier performance (defect rates, spec adherence) was tracked manually across Procurement, QA, and Production Control, making the process slow, inconsistent, and hard to audit.</p>
+        <p><strong>Solution:</strong> Led the digitization of the entire SPR workflow — mapped the manual process together with cross-functional teams, then designed and built the SPR Portal on CodeIgniter 3/MSSQL to standardize data entry, evaluation, and reporting, plus ran user training to drive adoption.</p>
+        <p><strong>Result:</strong> Replaced a manual, error-prone evaluation process with a standardized digital system used across three departments, improving data consistency and audit-readiness of supplier evaluations.</p>
+      </div>
+      <div class="tag-row">
+        <span class="tag">CodeIgniter 3</span>
+        <span class="tag">MSSQL</span>
+      </div>
+    </div>
+  
+    <!-- 5. Attendance & POS Android Systems -->
+    <div class="proj reveal">
+      <div class="proj-top">
+        <div class="proj-name">Attendance & POS Android Systems</div>
+        <div class="proj-metric">REST API</div>
+      </div>
+      <div class="proj-desc">
+        <p><strong>Type:</strong> Mobile & Backend Development — Production System</p>
+        <p><strong>Challenge:</strong> The attendance and POS applications required reliable backend services, database connectivity, and production infrastructure to support daily operational workflows.</p>
+        <p><strong>Solution:</strong> Developed and maintained Android applications integrated with REST APIs, alongside backend services using Node.js and Express.js. Implemented authentication, attendance and transaction processing, data synchronization, and API integrations. Migrated application services and databases from shared hosting to VPS infrastructure.</p>
+        <p><strong>Result:</strong> Delivered and maintained production-ready mobile and backend systems with centralized infrastructure, improving reliability, maintainability, and control over application deployment.</p>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Android</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express.js</span>
+        <span class="tag">PostgreSQL/MySQL</span>
+        <span class="tag">REST API</span>
+        <span class="tag">VPS</span>
+      </div>
+    </div>
+  
+    <!-- 6. Helpdesk Ticketing System -->
+    <div class="proj reveal">
+      <div class="proj-top">
+        <div class="proj-name">Helpdesk Ticketing System</div>
+        <div class="proj-metric">Laravel</div>
+      </div>
+      <div class="proj-desc">
+        <p><strong>Type:</strong> Full Stack Web Application — Personal / Client Project</p>
+        <p><strong>Challenge:</strong> Support requests were handled ad hoc with no consistent routing, prioritization, or visibility into team performance — making it hard to track response times or spot service gaps.</p>
+        <p><strong>Solution:</strong> Built a Laravel-based ticketing platform with rule-based routing and automated triggers that categorize and assign tickets to agents by priority and topic, removing manual triage. Added a reporting module using Koolreport to surface team performance and customer satisfaction metrics.</p>
+        <p><strong>Result:</strong> Gave the support team a self-service system for consistent ticket handling and, for the first time, data-backed visibility into agent performance and satisfaction trends.</p>
+      </div>
+      <div class="tag-row">
+        <span class="tag">Laravel</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Koolreport</span>
+      </div>
+    </div>
+  
+    <!-- 7. Rental Car Application -->
+    <div class="proj reveal">
+      <div class="proj-top">
+        <div class="proj-name">Rental Car Application</div>
+        <div class="proj-metric">Laravel</div>
+      </div>
+      <div class="proj-desc">
+        <p><strong>Type:</strong> Full Stack Web Application — Personal Project</p>
+        <p><strong>Challenge:</strong> Small rental agencies often manage vehicle listings, driver assignments, and check-in/check-out manually, making it easy to lose track of vehicle availability and booking status.</p>
+        <p><strong>Solution:</strong> Built a full-stack booking platform on Laravel/MySQL covering vehicle listings with detailed specs, user/driver/car data tracking, and a structured check-in/check-out workflow, with a responsive UI accessible across devices.</p>
+        <p><strong>Result:</strong> Gave rental agencies a single system to manage the full booking lifecycle — from listing a vehicle to tracking its return — replacing manual, spreadsheet-based tracking.</p>
+      </div>
+      <div class="tag-row">
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">Laravel</span>
+        <span class="tag">MySQL</span>
+      </div>
+    </div>
+  </div>
   </div>
 </section>
 
